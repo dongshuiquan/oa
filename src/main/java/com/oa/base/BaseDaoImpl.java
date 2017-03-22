@@ -13,7 +13,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public BaseDaoImpl() {
 		ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
 		this.clazz = (Class<T>) pt.getActualTypeArguments()[0];
-		System.out.println("clazz = " + clazz.getName());
+		System.out.println("clazz = " +  clazz.getName());
 	}
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -55,7 +55,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> getAll() {
+	public List<T> findAll() {
 		return (List<T>) getSession().createQuery(
 				"FROM " + clazz.getSimpleName())
 				.getResultList();

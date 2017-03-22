@@ -11,9 +11,26 @@
 	<!-- 配置主题为simple-->
 	<constant name="struts.ui.theme" value="simple"/>
 	
-	<package name="tags"  extends="struts-default">
-		<action name="test" class="com.oa.action.TestAction">
+	<package name="tags" namespace="/" extends="struts-default">
+		
+		<!-- 测试用 action, class 使用与Spring 整合后的bean name -->
+		<action name="test" class="testAction">
 			<result name="success">/test.jsp</result>
+		</action>
+		
+		<!-- 岗位管理 -->
+		<action name="roleAction_*" class="roleAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/roleAction/addUI.jsp</result>
+			<result name="editUI">/WEB-INF/jsp/roleAction/editUI.jsp</result>
+			<result name="toList" type="redirectAction">roleAction_list</result>
+		</action>
+		<!-- 部门管理 -->
+		<action name="departmentAction_*" class="departmentAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/departmentAction/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/departmentAction/addUI.jsp</result>
+			<result name="editUI">/WEB-INF/jsp/departmentAction/editUI.jsp</result>
+			<result name="toList" type="redirectAction">departmentAction_list?parentId=${parentId}</result>
 		</action>
     </package>
     

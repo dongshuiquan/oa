@@ -40,5 +40,5 @@ public interface BaseDao<T>{
 	 * 查询所有
 	 * @return
 	 */
-	List<T> getAll();
+	List<T> findAll();
 }
