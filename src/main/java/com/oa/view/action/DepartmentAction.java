@@ -2,23 +2,16 @@ package com.oa.view.action;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.oa.domain.Department;
-import com.oa.service.DepartmentService;
 import com.oa.util.DepartmentUtils;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 @Controller
 @Scope("prototype")
-public class DepartmentAction extends ActionSupport implements ModelDriven<Department>{
+public class DepartmentAction extends BaseAction<Department>{
 	private Long parentId;
-	private Department model = new Department();
-	@Autowired
-	private DepartmentService departmentService;
 	
 	private static final long serialVersionUID = 1L;
 	/**列表*/
@@ -75,10 +68,6 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
 		}
 		departmentService.update(model);
 		return "toList";
-	}
-	@Override
-	public Department getModel() {
-		return this.model;
 	}
 	public Long getParentId() {
 		return parentId;

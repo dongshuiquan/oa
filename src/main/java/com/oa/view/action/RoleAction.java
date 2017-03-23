@@ -9,14 +9,9 @@ import org.springframework.stereotype.Controller;
 import com.oa.domain.Role;
 import com.oa.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 @Controller
 @Scope("prototype")
-public class RoleAction extends ActionSupport implements ModelDriven<Role>{
-	private Role model = new Role();
-//	private String name;
-//	private String description;
+public class RoleAction extends BaseAction<Role>{
 	@Autowired
 	private RoleService roleService;
 	
@@ -51,21 +46,4 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
 		roleService.update(model);
 		return "toList";
 	}
-	@Override
-	public Role getModel() {
-		return this.model;
-	}
-	/*public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}*/
-	
 }

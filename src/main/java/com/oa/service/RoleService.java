@@ -1,6 +1,7 @@
 package com.oa.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.oa.domain.Role;
 
@@ -18,5 +19,7 @@ public interface RoleService {
 	Role getById(Long id);
 
 	void update(Role role);
+
+	Set<Role> getbyIds(Long[] roleIds);
 
 }

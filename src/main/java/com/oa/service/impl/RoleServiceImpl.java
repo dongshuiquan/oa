@@ -1,6 +1,8 @@
 package com.oa.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,13 @@ public class RoleServiceImpl implements RoleService{
 		oldRole.setName(role.getName());
 		oldRole.setDescription(role.getDescription());
 		roleDao.update(oldRole);
+	}
+
+	@Override
+	public Set<Role> getbyIds(Long[] roleIds) {
+		List<Role> list= roleDao.getByIds(roleIds);
+		Set<Role> roleSet = new HashSet<>(list);
+		return roleSet;
 	}
 	
 }
