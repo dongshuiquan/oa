@@ -18,5 +18,7 @@ public interface UserService{
 	void update(User model);
 
 	void initPassword(Long id);
+
+	User checkByUsernameAndPassword(String username, String password);
 	
 }

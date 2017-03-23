@@ -59,5 +59,11 @@ public class UserServiceImpl implements UserService{
 		user.setPassword(password);
 		userDao.update(user);
 	}
+
+	@Override
+	public User checkByUsernameAndPassword(String username, String password) {
+		String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
+		return userDao.checkByUsernameAndPassword(username, md5Password);
+	}
 	
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 @Entity
 public class Department {
 	@Id
@@ -22,6 +23,7 @@ public class Department {
 	private Department parent;
 	@OneToMany(mappedBy="parent", cascade=CascadeType.REMOVE,
 			fetch=FetchType.EAGER)
+	@OrderBy("id")
 	private Set<Department> children = new HashSet<>();
 	private String name;
 	private String description;

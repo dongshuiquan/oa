@@ -17,7 +17,7 @@
 </div>
 
 <div id="MainArea">
-    <table cellspacing="0" cellpadding="0" class="TableStyle">
+    <table class="TableStyle">
        
         <!-- 表头-->
         <thead>
@@ -32,7 +32,7 @@
         </thead>
         
         <!--显示数据列表-->
-        <tbody id="TableData" class="dataContainer" datakey="userList">
+        <tbody id="TableData" class="dataContainer">
         
         <s:iterator value="#userList"> 
             <tr class="TableDetail1 template">

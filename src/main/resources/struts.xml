@@ -23,6 +23,7 @@
 			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
 			<result name="addUI">/WEB-INF/jsp/roleAction/addUI.jsp</result>
 			<result name="editUI">/WEB-INF/jsp/roleAction/editUI.jsp</result>
+			<result name="setPrivilegeUI">/WEB-INF/jsp/roleAction/setPrivilegeUI.jsp</result>
 			<result name="toList" type="redirectAction">roleAction_list</result>
 		</action>
 		<!-- 部门管理 -->
@@ -38,6 +39,9 @@
 			<result name="addUI">/WEB-INF/jsp/userAction/addUI.jsp</result>
 			<result name="editUI">/WEB-INF/jsp/userAction/editUI.jsp</result>
 			<result name="toList" type="redirectAction">userAction_list?parentId=${parentId}</result>
+			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
+			<result name="toIndex" type="redirect">/index.jsp</result>
 		</action>
     </package>
     

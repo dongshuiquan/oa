@@ -1,5 +1,7 @@
 package com.oa.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +29,21 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 		User user = session.get(User.class, id);
 		user.setRoles(null);
 		session.remove(user);
+	}
+
+	@Override
+	public User checkByUsernameAndPassword(String username, String md5Password) {
+		User user = null;
+		@SuppressWarnings("unchecked")
+		List<User> userList = getSession().createQuery("FROM User u WHERE u.loginName = :loginName "
+				+ "and u.password = :password")
+				.setParameter("loginName", username)
+				.setParameter("password", md5Password)
+				.getResultList();
+		if(userList != null && userList.size() == 1){
+			user = userList.get(0);
+		}
+		return user;
 	}
 
 }

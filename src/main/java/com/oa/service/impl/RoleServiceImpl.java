@@ -48,6 +48,7 @@ public class RoleServiceImpl implements RoleService{
 		Role oldRole = roleDao.getById(role.getId());
 		oldRole.setName(role.getName());
 		oldRole.setDescription(role.getDescription());
+		oldRole.setPrivileges(role.getPrivileges());
 		roleDao.update(oldRole);
 	}
 

@@ -87,9 +87,28 @@ public class UserAction extends BaseAction<User>{
 		userService.initPassword(model.getId());
 		return "toList";
 	}
-	@Override
-	public User getModel() {
-		return this.model;
+	
+	/**登录页面*/
+	public String loginUI() throws Exception{
+		return "loginUI";
+	}
+	/**登录*/
+	public String login() throws Exception{
+		String username = model.getLoginName();
+		String password = model.getPassword();
+		User user = userService.checkByUsernameAndPassword(username, password);
+		if(user != null){
+			ActionContext.getContext().getSession().put("user", user);
+			return "toIndex";
+		}else{
+			addFieldError("login", "用户名或密码错误");
+			return "loginUI";
+		}
+	}
+	/**登出*/
+	public String logout() throws Exception{
+		ActionContext.getContext().getSession().remove("user");
+		return "logout";
 	}
 	public Long getDepartmentId() {
 		return departmentId;
