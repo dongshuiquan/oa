@@ -49,4 +49,9 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 		return privilegeDao.findTopList();
 	}
 
+	@Override
+	public List<String> findAllPrivilegeUrls() {
+		return privilegeDao.findAllPrivilegeUrls();
+	}
+
 }

@@ -46,7 +46,7 @@
 				<td>
 					<s:a action="roleAction_delete?id=%{id}" onclick="return delConfirm()">删除</s:a>
 					<s:a action="roleAction_editUI?id=%{id}">修改</s:a>
-					<s:a href="roleAction_setPrivilegeUI.action?id=%{id}">设置权限</s:a>
+					<s:a action="roleAction_setPrivilegeUI.action?id=%{id}">设置权限</s:a>
 				</td>
 			</tr>
 		</s:iterator>	

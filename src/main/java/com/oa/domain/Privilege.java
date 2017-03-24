@@ -25,7 +25,7 @@ public class Privilege {
 	private String url;
 	private String name;
 	private String icon; //图标， 顶级菜单用
-	@ManyToMany(mappedBy="privileges")
+	@ManyToMany(mappedBy="privileges", fetch=FetchType.EAGER)
 	private Set<Role> roles = new HashSet<>();
 	@ManyToOne
 	private Privilege parent;
@@ -88,7 +88,7 @@ public class Privilege {
 	@Override
 	public String toString() {
 		return "Privilege [id=" + id + ", url=" + url + ", name=" + name + ", icon=" + icon + ", roles=" + roles
-				+ ", parent=" + parent + ", children=" + children + "]";
+				+ ", parent=" + parent +  "]";
 	}
 	
 }

@@ -12,6 +12,21 @@
 	<constant name="struts.ui.theme" value="simple"/>
 	
 	<package name="tags" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="checkPrivilege" class="com.oa.interceptor.CheckPrivilegeInterceptor"></interceptor>
+			
+			<!-- 重新定义 defaultStack拦截器栈, 先判断权限  -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>	
+		
+		<!--  配置全局 Result -->
+		<global-results>
+			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+			<result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+		</global-results>
 		
 		<!-- 测试用 action, class 使用与Spring 整合后的bean name -->
 		<action name="test" class="testAction">
@@ -39,9 +54,14 @@
 			<result name="addUI">/WEB-INF/jsp/userAction/addUI.jsp</result>
 			<result name="editUI">/WEB-INF/jsp/userAction/editUI.jsp</result>
 			<result name="toList" type="redirectAction">userAction_list?parentId=${parentId}</result>
-			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
 			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
+			
+			
 			<result name="toIndex" type="redirect">/index.jsp</result>
+		</action>
+		<!-- 主页 -->
+		<action name="homeAction_*" class="homeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>
 		</action>
     </package>
     

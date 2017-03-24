@@ -1,6 +1,7 @@
 package com.oa.domain;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import com.opensymphony.xwork2.ActionContext;
 
 @Entity
 public 
@@ -36,6 +39,50 @@ class User {
 	private String phoneNumber;//电话号码
 	private String email;//电子邮箱
 	private String description;//说明
+	
+	public boolean hasPrivilegeByName(String privilegeName){
+		//超级管理员有所有权限
+		if(isAdmin()){
+			return true;
+		}
+		//其他用户要是权限才返回true
+		for(Role role : roles){
+			for(Privilege privilege : role.getPrivileges()){
+				if(privilege.getName().equals(privilegeName)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	public boolean hasPrivilegeByUrl(String privilegeUrl) {
+		if (isAdmin()) {
+			return true;
+		}
+
+		if (privilegeUrl.endsWith("UI")) {
+			privilegeUrl = privilegeUrl.substring(0, privilegeUrl.length() - 2);
+		}
+
+		@SuppressWarnings("unchecked")
+		List<String> allPrivilegeUrls = (List<String>) ActionContext.getContext().getApplication().get("allPrivilegeUrls");
+		if (!allPrivilegeUrls.contains(privilegeUrl)) {
+			return true;
+		} else {
+			for (Role role : roles) {
+				for (Privilege privilege : role.getPrivileges()) {
+					if (privilegeUrl.equals(privilege.getUrl())) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+	}
+	//是否是超级管理员
+	private boolean isAdmin() {
+		return "admin".equals(loginName);
+	}
 	public Long getId() {
 		return id;
 	}

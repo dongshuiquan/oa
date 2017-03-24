@@ -19,5 +19,13 @@ public class PrivilegeDaoImpl extends BaseDaoImpl<Privilege> implements Privileg
 				.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> findAllPrivilegeUrls() {
+		return getSession().createQuery(
+				"SELECT DISTINCT p.url FROM Privilege p WHERE p.url IS NOT NULL")
+				.getResultList();
+	}
+
 
 }

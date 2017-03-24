@@ -20,4 +20,6 @@ public interface PrivilegeService {
 
 	List<Privilege> findTopList();
 
+	List<String> findAllPrivilegeUrls();
+
 }

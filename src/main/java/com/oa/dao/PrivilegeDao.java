@@ -9,4 +9,6 @@ public interface PrivilegeDao extends BaseDao<Privilege>{
 
 	List<Privilege> findTopList();
 
+	List<String> findAllPrivilegeUrls();
+
 }
