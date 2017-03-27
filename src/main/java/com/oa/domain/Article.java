@@ -2,6 +2,7 @@ package com.oa.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,12 +24,13 @@ public class Article {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String title;
+	@Column(columnDefinition="text", length=65535)
 	private String content;
 	private String faceIcon;
 	@ManyToOne
 	private User author;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date posetTime;
+	private Date postTime;
 	private String idAddr;
 	public Long getId() {
 		return id;
@@ -54,11 +56,11 @@ public class Article {
 	public void setFaceIcon(String faceIcon) {
 		this.faceIcon = faceIcon;
 	}
-	public Date getPosetTime() {
-		return posetTime;
+	public Date getPostTime() {
+		return postTime;
 	}
-	public void setPosetTime(Date posetTime) {
-		this.posetTime = posetTime;
+	public void setPostTime(Date postTime) {
+		this.postTime = postTime;
 	}
 	public User getAuthor() {
 		return author;

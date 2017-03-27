@@ -13,11 +13,6 @@
         <a href="javascript:void(0)">[查看在线名单]</a>
 </span></div>
 
-    <div id="Info">
-    	<a href="http://www.itcast.cn" title = "传智播客首页" target=_blank >传智播客首页</a> |
-        <a href="http://bbs.itcast.cn" title = "传智播客BBS" target=_blank >传智播客BBS</a>
-    </div>
-
     <DIV id=DesktopText>
         <a href="javascript:void(0)"><img border="0" src="${pageContext.request.contextPath}/style/images/top/text.gif"/> 便笺</a>
 

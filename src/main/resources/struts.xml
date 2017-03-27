@@ -67,6 +67,22 @@
 			<result name="saveUI">/WEB-INF/jsp/forumManageAction/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">forumManageAction_list</result>
 		</action>
+		<!-- 论坛 - 版块相关功能 -->
+		<action name="forumAction_*" class="forumAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumAction/list.jsp</result>
+			<result name="show">/WEB-INF/jsp/forumAction/show.jsp</result>
+		</action>
+		<!-- 论坛 - 主题相关功能 -->
+		<action name="topicAction_*" class="topicAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/topicAction/addUI.jsp</result>
+			<result name="show">/WEB-INF/jsp/topicAction/show.jsp</result>
+			<result name="toShow" type="redirectAction">topicAction_show?id=${id}</result>
+		</action>
+		<!-- 论坛 - 回复相关功能 -->
+		<action name="replyAction_*" class="replyAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/replyAction/addUI.jsp</result>
+			<result name="toTopicShow" type="redirectAction">topicAction_show?id=${topicId}</result>
+		</action>
     </package>
     
 </struts>

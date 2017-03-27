@@ -4,11 +4,15 @@ import java.lang.reflect.ParameterizedType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.oa.domain.User;
 import com.oa.service.DepartmentService;
 import com.oa.service.ForumService;
 import com.oa.service.PrivilegeService;
+import com.oa.service.ReplyService;
 import com.oa.service.RoleService;
+import com.oa.service.TopicService;
 import com.oa.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -36,8 +40,18 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	protected PrivilegeService privilegeService;
 	@Autowired
 	protected ForumService forumService;
+	@Autowired
+	protected TopicService topicService;
+	@Autowired
+	protected ReplyService replyService;
+	
 	@Override
 	public T getModel() {
 		return model;
+	}
+	
+	//获取当前用户
+	protected User getCurrentUser(){
+		return (User) ActionContext.getContext().getSession().get("user");
 	}
 }
