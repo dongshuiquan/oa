@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.oa.service.DepartmentService;
+import com.oa.service.ForumService;
 import com.oa.service.PrivilegeService;
 import com.oa.service.RoleService;
 import com.oa.service.UserService;
@@ -33,6 +34,8 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	protected DepartmentService departmentService;
 	@Autowired
 	protected PrivilegeService privilegeService;
+	@Autowired
+	protected ForumService forumService;
 	@Override
 	public T getModel() {
 		return model;

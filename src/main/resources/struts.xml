@@ -55,13 +55,17 @@
 			<result name="editUI">/WEB-INF/jsp/userAction/editUI.jsp</result>
 			<result name="toList" type="redirectAction">userAction_list?parentId=${parentId}</result>
 			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
-			
-			
 			<result name="toIndex" type="redirect">/index.jsp</result>
 		</action>
 		<!-- 主页 -->
 		<action name="homeAction_*" class="homeAction" method="{1}">
 			<result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>
+		</action>
+		<!-- 论坛 - 版块管理 -->
+		<action name="forumManageAction_*" class="forumManageAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumManageAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/forumManageAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">forumManageAction_list</result>
 		</action>
     </package>
     
