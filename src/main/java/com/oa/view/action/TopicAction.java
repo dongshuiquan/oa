@@ -1,16 +1,17 @@
 package com.oa.view.action;
 
 import java.util.Date;
-import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.oa.domain.Forum;
+import com.oa.domain.PageBean;
 import com.oa.domain.Reply;
 import com.oa.domain.Topic;
 import com.oa.domain.User;
+import com.oa.util.HqlHelper;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller
@@ -26,8 +27,17 @@ public class TopicAction extends BaseAction<Topic>{
 		Topic topic = topicService.getById(model.getId());
 		ActionContext.getContext().put("topic", topic);
 		//准备数据
-		List<Reply> replyList = replyService.getByTopic(topic);
-		ActionContext.getContext().put("replyList", replyList);
+//		List<Reply> replyList = replyService.getByTopic(topic);
+//		ActionContext.getContext().put("replyList", replyList);
+		//准备数据(使用公有方法)
+//		String hql = "FROM Reply r WHERE r.topic = ? ORDER BY r.postTime ASC";
+//		Object[] parameters = new Object[]{topic};
+//		PageBean pageBean = replyService.getPageBean(pageNum, hql, parameters);
+		HqlHelper hqlHelper = new HqlHelper(Reply.class, "r");
+		hqlHelper.addCondition("r.topic=?", topic)
+				.addOrder("r.postTime", true);
+		PageBean pageBean = replyService.getPageBean(pageNum, hqlHelper);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "show";
 	}
 
@@ -62,5 +72,7 @@ public class TopicAction extends BaseAction<Topic>{
 	public void setForumId(Long forumId) {
 		this.forumId = forumId;
 	}
+
+	
 	
 }

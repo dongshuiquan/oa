@@ -34,7 +34,7 @@
         <!--显示数据列表-->
         <tbody id="TableData" class="dataContainer">
         
-        <s:iterator value="#userList"> 
+        <s:iterator value="recordList"> 
             <tr class="TableDetail1 template">
                 <td>${loginName}&nbsp;</td>
                 <td>${name}&nbsp;</td>
@@ -56,7 +56,13 @@
             
         </tbody>
     </table>
-    
+    <!--分页信息-->
+	<%@ include file="/WEB-INF/jsp/public/pageView.jsp" %>
+	<script type="text/javascript">
+		function gotoPage(pageNum){
+			window.location.href="userAction_list.action?pageNum="+pageNum;
+		}
+	</script>
     <!-- 其他功能超链接 -->
     <div id="TableTail">
         <div id="TableTail_inside">

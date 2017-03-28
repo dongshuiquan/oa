@@ -7,4 +7,6 @@ public interface UserDao extends BaseDao<User>{
 
 	User checkByUsernameAndPassword(String username, String md5Password);
 
+	void addUser_20();
+
 }

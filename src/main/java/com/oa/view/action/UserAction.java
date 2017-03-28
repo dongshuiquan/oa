@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.oa.domain.Department;
+import com.oa.domain.PageBean;
 import com.oa.domain.Role;
 import com.oa.domain.User;
 import com.oa.util.DepartmentUtils;
+import com.oa.util.HqlHelper;
 import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
@@ -22,8 +24,11 @@ public class UserAction extends BaseAction<User>{
 	private Long[] roleIds;
 	/**列表*/
 	public String list() throws Exception{
-		List<User> userList = userService.findAll();
-		ActionContext.getContext().put("userList", userList);
+//		List<User> userList = userService.findAll();
+//		ActionContext.getContext().put("userList", userList);
+		HqlHelper hqlHelper = new HqlHelper(User.class, "u");
+		PageBean pageBean = userService.getPageBean(pageNum, hqlHelper);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "list";
 	}
 	/**删除*/

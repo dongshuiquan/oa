@@ -46,4 +46,14 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 		return user;
 	}
 
+	@Override
+	public void addUser_20() {
+		User user = null;
+		for(int i = 0; i < 20; i++){
+			user = new User();
+			user.setName("测试_" + i);
+			getSession().save(user);
+		}
+	}
+
 }

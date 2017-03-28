@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import com.oa.dao.UserDao;
+import com.oa.domain.PageBean;
 import com.oa.domain.User;
 import com.oa.service.UserService;
+import com.oa.util.HqlHelper;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService{
@@ -64,6 +66,16 @@ public class UserServiceImpl implements UserService{
 	public User checkByUsernameAndPassword(String username, String password) {
 		String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
 		return userDao.checkByUsernameAndPassword(username, md5Password);
+	}
+
+	@Override
+	public void addUser_20() {
+		userDao.addUser_20();
+	}
+
+	@Override
+	public PageBean getPageBean(int pageNum, HqlHelper hqlHelper) {
+		return userDao.getPageBean(pageNum, hqlHelper);
 	}
 	
 }

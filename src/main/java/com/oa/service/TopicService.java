@@ -3,6 +3,7 @@ package com.oa.service;
 import java.util.List;
 
 import com.oa.domain.Forum;
+import com.oa.domain.PageBean;
 import com.oa.domain.Topic;
 
 public interface TopicService {
@@ -17,5 +18,8 @@ public interface TopicService {
 	void save(Topic model);
 
 	Topic getById(Long id);
+
+	@Deprecated
+	PageBean getPageBean(int pageNum, Forum forum);
 
 }

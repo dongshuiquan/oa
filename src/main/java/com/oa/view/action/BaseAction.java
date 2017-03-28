@@ -18,6 +18,8 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public abstract class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	private static final long serialVersionUID = 1L;
+	
+	protected int pageNum = 1;
 	@SuppressWarnings("unchecked")
 	public BaseAction() {
 		//得到  model 的类型信息
@@ -53,5 +55,13 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	//获取当前用户
 	protected User getCurrentUser(){
 		return (User) ActionContext.getContext().getSession().get("user");
+	}
+	
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
 	}
 }

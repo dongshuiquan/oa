@@ -3,6 +3,9 @@ package com.oa.base;
 
 import java.util.List;
 
+import com.oa.domain.PageBean;
+import com.oa.util.HqlHelper;
+
 public interface BaseDao<T>{
 	/**
 	 * 保存实体
@@ -41,4 +44,16 @@ public interface BaseDao<T>{
 	 * @return
 	 */
 	List<T> findAll();
+	
+	/**
+	 * 公共的查询分页信息的方法
+	 * @param pageNum
+	 * @param queryListHQL 查询列表的查询语句， 前面加上 （“SELECT COUNT(*) "
+	 * 			就是查询数量的 HQL 语句
+	 * @param parameters 参数列表， 顺序与  queryListHQL 中的 ‘？’ 的顺序一一对应
+	 * @return
+	 */
+	PageBean getPageBean(int pageNum, String queryListHQL, Object[] parameters);
+	
+	PageBean getPageBean(int pageNum, HqlHelper hqlHelper);
 }

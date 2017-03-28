@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.oa.dao.ForumDao;
 import com.oa.dao.TopicDao;
 import com.oa.domain.Forum;
+import com.oa.domain.PageBean;
 import com.oa.domain.Topic;
 import com.oa.service.TopicService;
 
@@ -21,6 +22,7 @@ public class TopicServiceImpl implements TopicService{
 	@Autowired
 	private ForumDao forumDao;
 	@Override
+	@Deprecated 
 	public List<Topic> findByForum(Forum forum) {
 		return topicDao.findByForum(forum);
 	}
@@ -48,6 +50,11 @@ public class TopicServiceImpl implements TopicService{
 	@Override
 	public Topic getById(Long id) {
 		return topicDao.getById(id);
+	}
+
+	@Override
+	public PageBean getPageBean(int pageNum, Forum forum) {
+		return topicDao.getPageBean(pageNum, forum);
 	}
 
 }
