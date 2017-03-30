@@ -10,6 +10,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   <name>OA Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
+    
    <!-- 集中定义依赖版本号 -->
 	<properties>
 		<struts2.version>2.3.31</struts2.version>
@@ -24,6 +25,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<hibernate.version>5.2.4.Final</hibernate.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
 		<tomcat.version>2.2</tomcat.version>
+		<activiti.version>5.21.0</activiti.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
@@ -157,6 +159,19 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	    <version>${mysql.version}</version>
 	    <scope>runtime</scope>
 	</dependency>
+	
+	<!-- activiti -->
+	<dependency>
+	    <groupId>org.activiti</groupId>
+	    <artifactId>activiti-engine</artifactId>
+	    <version>${activiti.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.activiti</groupId>
+	    <artifactId>activiti-spring</artifactId>
+	    <version>${activiti.version}</version>
+	</dependency>
+	
    </dependencies>
    
    

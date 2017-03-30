@@ -47,7 +47,7 @@
         </property>
     </bean>
    
-       <bean id="txManager"
+    <bean id="txManager"
             class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
         <property name="autodetectDataSource" value="false" />
@@ -55,6 +55,15 @@
 
 	<tx:annotation-driven transaction-manager="txManager" mode="proxy" proxy-target-class="true"/>
     
-  
+	<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+		<property name="dataSource" ref="dataSource" />
+	    <property name="transactionManager" ref="txManager" />
+	    <property name="databaseSchemaUpdate" value="true" />
+	    <property name="jobExecutorActivate" value="false" />
+	</bean>
+
+	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+	  <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	</bean>
     
 </beans>    
