@@ -9,7 +9,7 @@ import com.oa.domain.Forum;
 import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
-public class ForumManageAction extends BaseAction<Forum>{
+public class ForumManageAction extends ModelDrivenBaseAction<Forum>{
 	
 	private static final long serialVersionUID = 1L;
 	

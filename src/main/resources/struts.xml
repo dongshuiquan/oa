@@ -10,6 +10,8 @@
 	<constant name="struts.action.extension" value="action"/>
 	<!-- 配置主题为simple-->
 	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 配置使用 OGNL 静态方法  -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
 	
 	<package name="tags" namespace="/" extends="struts-default">
 		<interceptors>
@@ -82,6 +84,31 @@
 		<action name="replyAction_*" class="replyAction" method="{1}">
 			<result name="addUI">/WEB-INF/jsp/replyAction/addUI.jsp</result>
 			<result name="toTopicShow" type="redirectAction">topicAction_show?id=${topicId}</result>
+		</action>
+		
+		<!-- 审批流转 ： 审批流程 -->
+		<action name="processDefinitionAction_*" class="processDefinitionAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/processDefinitionAction/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/processDefinitionAction/addUI.jsp</result>
+			<result name="toList" type="redirectAction">processDefinitionAction_list</result>
+			<!-- 下载专用的结果配置 -->
+			<result name="downloadProcessImage" type="stream">
+				<param name="contentType">image/png</param>
+				<param name="inputStream">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- 审批流转 ： 申请模板管理 -->
+		<action name="applicationTemplateAction_*" class="applicationTemplateAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/applicationTemplateAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/applicationTemplateAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">applicationTemplateAction_list</result>
+			<!-- 下载专用的结果配置 -->
+			<result name="download" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputStream">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${#fileName}.doc"</param>
+			</result>
 		</action>
     </package>
     

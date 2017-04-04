@@ -10,7 +10,7 @@ import com.oa.util.DepartmentUtils;
 import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
-public class DepartmentAction extends BaseAction<Department>{
+public class DepartmentAction extends ModelDrivenBaseAction<Department>{
 	private Long parentId;
 	
 	private static final long serialVersionUID = 1L;

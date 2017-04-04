@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class ForumAction extends BaseAction<Forum>{
+public class ForumAction extends ModelDrivenBaseAction<Forum>{
 
 	private static final long serialVersionUID = 1L;
 	/**

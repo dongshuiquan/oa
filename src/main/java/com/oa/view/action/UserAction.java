@@ -16,7 +16,7 @@ import com.oa.util.HqlHelper;
 import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
-public class UserAction extends BaseAction<User>{
+public class UserAction extends ModelDrivenBaseAction<User>{
 	
 	private static final long serialVersionUID = 1L;
 	

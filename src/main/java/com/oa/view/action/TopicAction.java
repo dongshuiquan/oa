@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class TopicAction extends BaseAction<Topic>{
+public class TopicAction extends ModelDrivenBaseAction<Topic>{
 
 	private static final long serialVersionUID = 1L;
 	private Long forumId;

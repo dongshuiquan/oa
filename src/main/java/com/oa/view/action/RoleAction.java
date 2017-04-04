@@ -13,7 +13,7 @@ import com.oa.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
-public class RoleAction extends BaseAction<Role>{
+public class RoleAction extends ModelDrivenBaseAction<Role>{
 	@Autowired
 	private RoleService roleService;
 	

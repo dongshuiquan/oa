@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class ReplyAction extends BaseAction<Reply>{
+public class ReplyAction extends ModelDrivenBaseAction<Reply>{
 	
 	private static final long serialVersionUID = 1L;
 	
