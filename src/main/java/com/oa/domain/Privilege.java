@@ -1,5 +1,6 @@
 package com.oa.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,9 @@ import javax.persistence.OrderBy;
  * @author dong
  */
 @Entity
-public class Privilege {
+public class Privilege implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;

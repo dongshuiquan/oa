@@ -1,5 +1,6 @@
 package com.oa.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
-public class Topic extends Article{
+public class Topic extends Article implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	/**普通贴*/
 	public static final int TYPE_NORMAL = 0;
 	/**精华贴*/

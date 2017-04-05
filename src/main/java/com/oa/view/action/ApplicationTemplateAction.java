@@ -8,7 +8,6 @@ import java.net.URLEncoder;
 import java.util.List;
 
 import org.activiti.engine.repository.ProcessDefinition;
-import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 

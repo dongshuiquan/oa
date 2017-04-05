@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.oa.domain.User;
 import com.oa.service.ApplicationTemplateService;
 import com.oa.service.DepartmentService;
+import com.oa.service.FlowService;
 import com.oa.service.ForumService;
 import com.oa.service.PrivilegeService;
 import com.oa.service.ProcessDefinitionService;
@@ -45,7 +46,8 @@ public abstract class BaseAction extends ActionSupport{
 	protected ProcessDefinitionService processDefinitionService;
 	@Autowired
 	protected ApplicationTemplateService applicationTemplateService;
-	
+	@Autowired
+	protected FlowService flowService;
 	
 	//获取当前用户
 	protected User getCurrentUser(){

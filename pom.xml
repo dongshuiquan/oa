@@ -184,7 +184,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	        <version>${tomcat.version}</version>
 	        <configuration>
 	        	<path>/</path> 
-	        	<port>8090</port>
+	        	<port>8080</port>
 	        </configuration>
   		</plugin>
   		
